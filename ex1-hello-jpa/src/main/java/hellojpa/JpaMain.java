@@ -109,6 +109,34 @@ public class JpaMain {
 //            - 삭제 (removed): 삭제된 상태
 
 
+////            @GeneratedValue에서 Identity
+//            Member member = new Member();
+//            member.setUsername("AA");
+//
+//            System.out.println("======");
+//            em.persist(member);
+//            // INSERT QUERY를 날렸을 때 해당 값을 리턴 받기에 별도로 SELECT 쿼리를 날리지 않아도 조회하게 됨
+//            System.out.println("member.getId = " + member.getId());
+//            System.out.println("member.getUsername() = " + member.getUsername());
+//
+//            System.out.println("======");
+
+
+//            //@GeneratedValue 에서 SEQUENCE, allocationSize = 50으로 최적화
+//            Member member1 = new Member();
+//            member1.setUsername("A");
+//            Member member2 = new Member();
+//            member2.setUsername("B");
+//            Member member3 = new Member();
+//            member3.setUsername("C");
+//
+//            System.out.println("======");
+//            em.persist(member1); // 1, 51 (1임을 확인하고 다시 한번 next call을 호출하여 51로 늘림)
+//            em.persist(member2); // memory
+//            em.persist(member3); // memory
+//            System.out.println("======");
+
+            
             tx.commit();
         }catch (Exception e){
             tx.rollback();
