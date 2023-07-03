@@ -4,12 +4,12 @@ import javax.persistence.*;
 
 @Entity
 //@Table(name="MBR") // 테이블과 매핑, 카탈로그 스키마 구분 가능
-@SequenceGenerator(
-        name = "MEMBER_SEQ_GENERATOR",
-        sequenceName = "MEMBER_SEQ",
-        initialValue = 1,
-        allocationSize = 1
-)
+//@SequenceGenerator(
+//        name = "MEMBER_SEQ_GENERATOR",
+//        sequenceName = "MEMBER_SEQ",
+//        initialValue = 1,
+//        allocationSize = 1
+//)
 //@TableGenerator(
 //        name= "MEMBER_SEQ_GENERATOR",
 //        table = "MY_SEQUENCES",
@@ -21,11 +21,13 @@ public class Member {
     //    어플리케이션 전체를 봤을 때는 Integer 를 Long 으로 하더라도 영향을 거의 주지 않음
 //    오히려 10억이 넘어갈 때 타입을 바꾸는게 더 힘듦 : Long 권장
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")
+    @GeneratedValue
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")
 //    @GeneratedValue(strategy = GenerationType.TABLE,
 //            generator = "MEMBER_SEQ_GENERATOR")
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MEMBER_ID")
     private Long id;
     //DDL 생성 기능 - 제약 조건 추가: 회원 이름은 필수, 10자 초과 X
     //DDL을 자동 생성할 때만 사용되고 JPA 실행 로직에는 영향을 주지 않는다.
@@ -33,8 +35,13 @@ public class Member {
 //    @Column(nullable = false, length = 10)
 //    private String name;
 
-    @Column(name = "name", nullable = false)
+//    @Column(name = "name", nullable = false)
+    @Column(name = "USERNAME")
     private String username;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public Long getId() {
         return id;
@@ -50,6 +57,14 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     //    private Integer age;
