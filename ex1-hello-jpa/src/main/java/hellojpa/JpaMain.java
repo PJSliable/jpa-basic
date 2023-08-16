@@ -136,26 +136,52 @@ public class JpaMain {
 //            em.persist(member3); // memory
 //            System.out.println("======");
 
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setUsername("member1");
+//
+////            member.setTeamId(team.getId());
+//            member.setTeam(team);
+//            em.persist(member);
+//
+//            em.flush();
+//            em.clear();
+//
+//            Member findMember = em.find(Member.class, member.getId());
+////            Long findTeamId = findMember.getTeamId();
+////            Team findTeam = em.find(Team.class, findTeamId);
+//            Team findTeam = findMember.getTeam();
+//            System.out.println("findTeam.getName() = " + findTeam.getName());
 
-            Member member = new Member();
-            member.setUsername("member1");
 
-//            member.setTeamId(team.getId());
-            member.setTeam(team);
-            em.persist(member);
+//            Member member = new Member();
+//            member.setUsername("member1");
+//
+//            em.persist(member);
+//
+//            Team team = new Team();
+//            team.setName("teamA");
+//
+//            team.getMembers().add(member);
+//            em.persist(team);
+
+
+            Movie movie = new Movie();
+            movie.setDirector("aaaa")
+            movie.setActor("BBBB");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(10000);
+
+            em.persist(movie);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
-//            Long findTeamId = findMember.getTeamId();
-//            Team findTeam = em.find(Team.class, findTeamId);
-            Team findTeam = findMember.getTeam();
-            System.out.println("findTeam.getName() = " + findTeam.getName());
-
+            Movie findMovie = em.find(Movie.class, movie.getId());
+            System.out.println("findMovie = " + findMovie);
 
             tx.commit();
         }catch (Exception e){
