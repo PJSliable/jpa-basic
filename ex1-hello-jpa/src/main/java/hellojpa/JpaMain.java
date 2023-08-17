@@ -170,7 +170,7 @@ public class JpaMain {
 
 
             Movie movie = new Movie();
-            movie.setDirector("aaaa")
+            movie.setDirector("aaaa");
             movie.setActor("BBBB");
             movie.setName("바람과 함께 사라지다");
             movie.setPrice(10000);

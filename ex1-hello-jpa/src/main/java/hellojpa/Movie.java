@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("M")
+@DiscriminatorValue("M") // DTYPE Field의 기본값으로 Entity명, 변경할 수 있음. Movie이기에 M으로 변경
 public class Movie extends Item {
     private String director;
     private String actor;

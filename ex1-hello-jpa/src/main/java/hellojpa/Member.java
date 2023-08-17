@@ -18,7 +18,7 @@ import java.util.List;
 //        pkColumnValue = "MEMBER_SEQ",
 //        allocationSize = 1
 //)
-public class Member {
+public class Member extends BaseEntity {
 
     //    어플리케이션 전체를 봤을 때는 Integer 를 Long 으로 하더라도 영향을 거의 주지 않음
 //    오히려 10억이 넘어갈 때 타입을 바꾸는게 더 힘듦 : Long 권장
